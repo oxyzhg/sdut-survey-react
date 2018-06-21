@@ -1,0 +1,35 @@
+.am-list {
+  margin-top: 8px;
+}
+
+.am-list-item .am-list-line .am-list-content {
+  font-size: 14px;
+  white-space: normal!important;
+}
+
+.page__title {
+  padding: 40px 10px 20px;
+  color: #3d3b4f;
+}
+
+.page__desc {
+  margin: 40px auto;
+  color: #80848f;
+  text-align: justify;
+  text-indent: 2em;
+  line-height: 1.36;
+  font-size: 14px;
+}
+
+.page__desc p {
+  margin: 8px;
+}
+
+.page__desc p:first-child {
+  text-indent: 0;
+}
+
+.basic-info-form {
+  margin: 20px 0;
+  text-align: left;
+}
