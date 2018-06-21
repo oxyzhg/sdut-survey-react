@@ -1,8 +1,8 @@
-## 山东理工大学学生工作处辅导员风采展示页面
+## 山东理工大学新学期思想动态调查问卷系统
 
 ### 使用
 
-把项目clone到本地：
+把代码拉到本地：
 
 ```bash
 git clone https://github.com/oxyzhg/sdut-fdy-react.git
@@ -47,5 +47,5 @@ yarn build
 - react16
 - react-router4
 - es6
-- antd
+- antd-mobile
 
