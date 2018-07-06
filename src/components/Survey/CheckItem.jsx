@@ -5,20 +5,20 @@ import './Survey.css';
 
 const { CheckboxItem } = Checkbox;
 
-const CheckItem = ({ type, id, value, label, isChecked, handleChange }) => {
+const CheckItem = props => {
   return (
     <CheckboxItem
-      checked={isChecked(type, id, value)}
-      onChange={() => handleChange(type, id, value)}
+      checked={props.isChecked(props.type, props.num, props.value)}
+      onChange={() => props.handleChange(props.type, props.num, props.value)}
     >
-      {label}
+      {props.label}
     </CheckboxItem>
   );
 };
 
 CheckItem.propTypes = {
-  type: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  num: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   isChecked: PropTypes.func.isRequired,

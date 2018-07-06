@@ -25,11 +25,7 @@
   margin: 8px;
 }
 
-.page__desc p:first-child {
-  text-indent: 0;
-}
-
-.basic-info-form {
+.pre-fields-form {
   margin: 20px 0;
   text-align: left;
 }

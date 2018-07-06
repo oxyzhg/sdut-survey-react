@@ -6,15 +6,15 @@ import './Survey.css';
 const CheckList = props => {
   return (
     <WingBlank>
-      <div className="page__title">
-        <h2>{props.title}</h2>
+      <div className="page__desc">
+        <p>{props.description}</p>
       </div>
     </WingBlank>
   );
 };
 
 CheckList.propTypes = {
-  title: PropTypes.string
+  description: PropTypes.string
 };
 
 export default CheckList;

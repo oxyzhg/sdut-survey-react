@@ -4,7 +4,7 @@ import { WingBlank, Button } from 'antd-mobile';
 
 const CheckList = props => {
   return (
-    <WingBlank style={{ marginTop: '40px' }}>
+    <WingBlank style={{ marginTop: '40px', marginBottom: '40px' }}>
       <Button type="primary" onClick={props.handleSubmit}>
         提交
       </Button>

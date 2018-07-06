@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from '../containers/Survey/Home';
+import Home from '../containers/Home';
+import Prefs from '../containers/Survey/Prefs';
 import Survey from '../containers/Survey/Survey';
 import Finish from '../containers/Survey/Finish';
-// import Survey from "../components/Survey/Survey";
+import NoMatch from '../containers/NoMatch';
 
 class Router extends Component {
   render() {
     return (
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/survey" component={Survey} />
-        <Route exact path="/result" component={Finish} />
+        <Route exact path="/prefs/:catid" component={Prefs} />
+        <Route exact path="/survey/:catid" component={Survey} />
+        <Route exact path="/result/:catid" component={Finish} />
+        <Route component={NoMatch} />
       </Switch>
     );
   }
