@@ -1,5 +1,5 @@
-export const updatePreFieldAnswers = data => ({
-  type: 'UPDATE_PRE_FIELD_ANSWERS',
+export const updatePrefsAnswers = data => ({
+  type: 'UPDATE_PREFS_ANSWERS',
   data
 });
 

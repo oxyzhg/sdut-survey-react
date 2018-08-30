@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox } from 'antd-mobile';
-import './Survey.css';
 
 const { CheckboxItem } = Checkbox;
 
@@ -17,8 +16,8 @@ const CheckItem = props => {
 };
 
 CheckItem.propTypes = {
-  type: PropTypes.string.isRequired,
-  num: PropTypes.string.isRequired,
+  type: PropTypes.number.isRequired,
+  num: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   isChecked: PropTypes.func.isRequired,

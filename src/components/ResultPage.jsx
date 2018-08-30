@@ -13,8 +13,8 @@ const ResultPage = props => {
           className="spe"
         />
       }
-      title={props.title}
-      message={props.message}
+      title={props.title || 'page title'}
+      message={props.message || 'page message'}
     />
   );
 };

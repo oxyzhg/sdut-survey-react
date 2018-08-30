@@ -1,21 +1,21 @@
 const initialStore = {
-  field_answers: {},
-  survey_answers: {}
+  prefsAnswers: {},
+  surveyAnswers: {}
 };
 
-const surveyFormBack = (state = initialStore, action) => {
+const surveyData = (state = initialStore, action) => {
   switch (action.type) {
-    case 'UPDATE_PRE_FIELD_ANSWERS':
+    case 'UPDATE_PREFS_ANSWERS':
       return {
         ...state,
-        field_answers: {
+        prefsAnswers: {
           ...action.data
         }
       };
     case 'UPDATE_SURVEY_ANSWERS':
       return {
         ...state,
-        survey_answers: {
+        surveyAnswers: {
           ...action.data
         }
       };
@@ -24,4 +24,4 @@ const surveyFormBack = (state = initialStore, action) => {
   }
 };
 
-export default surveyFormBack;
+export default surveyData;

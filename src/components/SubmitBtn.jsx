@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { WingBlank, Button } from 'antd-mobile';
 
-const CheckList = props => {
+const SubmitBtn = props => {
   return (
-    <WingBlank style={{ marginTop: '40px', marginBottom: '40px' }}>
+    <WingBlank className="submit-btn">
       <Button type="primary" onClick={props.handleSubmit}>
         提交
       </Button>
@@ -12,8 +12,8 @@ const CheckList = props => {
   );
 };
 
-CheckList.propTypes = {
+SubmitBtn.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-export default CheckList;
+export default SubmitBtn;
