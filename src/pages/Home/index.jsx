@@ -24,7 +24,7 @@ class Home extends Component {
     const { catid } = this.props.surveyData;
 
     if (catid !== Number(id)) {
-      this.getSurveyData(id);
+      this.getSurveyData(Number(id));
     } else {
       this.setState({ loading: false });
     }
@@ -91,7 +91,7 @@ class Home extends Component {
     e.preventDefault();
     const { catid, preFields, surveyFields, rawData } = this.props.surveyData;
     const { surveyAnswers, prefsAnswers } = this.props.surveyAnsws;
-    const { id, user_required } = rawData;
+    const { user_required } = rawData;
 
     // 判断是否完成必选题
     const hasSurveyEmpty = surveyFields.filter(item => {
@@ -135,13 +135,14 @@ class Home extends Component {
    * @description 根据 id 获取问卷内容
    * @memberof Home
    */
-  getSurveyData = (id) => {
+  getSurveyData = id => {
+    if (!id) return;
     const { baseUrl } = this.props;
+
     axios
       .get(`${baseUrl}/ques/${id}`)
       .then(res => {
         if (res.status >= 200 && res.status <= 300) {
-          // console.log(res.data.data);
           const { id, login_questions, invest_questions, user_required } = res.data.data;
           const { updateCatid, updatePrefs, updateSurfs, updateRawData } = this.props;
           // TODO: 判断开放关闭时间段

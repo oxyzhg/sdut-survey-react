@@ -70,6 +70,7 @@ class Prefs extends Component {
       Toast.success('Success!', 1);
       this.props.history.push(`/${catid}`);
     }
+    this.props.history.push(`/${catid}`);
   };
 
   render() {

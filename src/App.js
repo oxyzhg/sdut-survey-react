@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import NotMatch from '@/pages/404';
 import Home from '@/pages/Home';
 import Prefs from '@/pages/Prefs';
