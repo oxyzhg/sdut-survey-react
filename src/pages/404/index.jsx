@@ -7,7 +7,7 @@ class NotMatch extends Component {
     return (
       <BasicLayout history={this.props.history}>
         <ResultPage
-          icon="cross-circle"
+          icon="close-circle-o"
           iconColor="#f13642"
           title="无法匹配问卷"
           message="请检查链接是否正确"

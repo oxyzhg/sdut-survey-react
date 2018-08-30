@@ -24,7 +24,7 @@ class Home extends Component {
     const { catid } = this.props.surveyData;
 
     if (catid !== Number(id)) {
-      this.getSurveyData();
+      this.getSurveyData(id);
     } else {
       this.setState({ loading: false });
     }
@@ -135,10 +135,10 @@ class Home extends Component {
    * @description 根据 id 获取问卷内容
    * @memberof Home
    */
-  getSurveyData = () => {
+  getSurveyData = (id) => {
     const { baseUrl } = this.props;
     axios
-      .get(`${baseUrl}/ques/4`)
+      .get(`${baseUrl}/ques/${id}`)
       .then(res => {
         if (res.status >= 200 && res.status <= 300) {
           // console.log(res.data.data);
