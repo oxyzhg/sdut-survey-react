@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, InputItem, Picker } from 'antd-mobile';
-import './Survey.css';
 
-const PreFieldForm = props => {
+const PrefsForm = props => {
   return (
     <List renderHeader={() => '基本信息'} className="pre-fields-form">
       {props.fieldList &&
         props.fieldList.map(item => (
           <div key={item.input_num}>
-            {item.input_type === '1' ? (
+            {item.input_type === 1 ? (
               <Picker
                 data={item.input_options}
                 value={props.fieldAnswers[item.input_num]}
@@ -34,10 +33,10 @@ const PreFieldForm = props => {
   );
 };
 
-PreFieldForm.propTypes = {
+PrefsForm.propTypes = {
   fieldList: PropTypes.array,
   fieldAnswers: PropTypes.object,
   handleChange: PropTypes.func.isRequired
 };
 
-export default PreFieldForm;
+export default PrefsForm;

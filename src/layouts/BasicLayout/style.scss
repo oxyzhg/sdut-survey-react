@@ -1,0 +1,16 @@
+.page__layout {
+  min-height: 100vh;
+}
+
+.page__hd,
+.page__ft {
+  text-align: center;
+}
+
+.page__ft {
+  padding: 2rem 0;
+  color: #999;
+  line-height: 1.5;
+  font-size: 12px;
+  // background-color: #f0f2f5;
+}

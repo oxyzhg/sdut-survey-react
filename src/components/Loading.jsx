@@ -3,9 +3,9 @@ import { WingBlank, Icon } from 'antd-mobile';
 
 const Loading = props => {
   return (
-    <WingBlank style={{ paddingTop: '100px' }}>
+    <WingBlank className="loading-data">
       <Icon type="loading" />
-      <p>Loading...</p>
+      <p>loading</p>
     </WingBlank>
   );
 };

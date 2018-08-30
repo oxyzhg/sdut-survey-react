@@ -7,5 +7,6 @@ export default function configureStore(initialState) {
     initialState,
     window.devToolsExtension ? window.devToolsExtension() : undefined
   );
+
   return store;
 }

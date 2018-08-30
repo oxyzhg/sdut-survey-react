@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { WingBlank } from 'antd-mobile';
-import './Survey.css';
+import './style.scss';
 
 const CheckList = props => {
   return (

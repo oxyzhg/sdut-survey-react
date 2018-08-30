@@ -13,7 +13,7 @@ class Router extends Component {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/prefs/:catid" component={Prefs} />
-        <Route exact path="/survey/:catid" component={Survey} />
+        <Route exact path="/:catid" component={Survey} />
         <Route exact path="/result/:catid" component={Finish} />
         <Route component={NoMatch} />
       </Switch>

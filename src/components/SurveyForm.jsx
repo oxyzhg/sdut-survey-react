@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List, TextareaItem } from 'antd-mobile';
-import './Survey.css';
 import CheckItem from './CheckItem';
 
 const SurveyForm = props => {
@@ -10,7 +9,7 @@ const SurveyForm = props => {
       {props.surveyList &&
         props.surveyList.map((item, index) => (
           <div key={item.id}>
-            {item.input_type === '3' ? (
+            {item.input_type === 3 ? (
               <List renderHeader={`${item.input_num}.${item.input_title}`}>
                 <TextareaItem
                   autoHeight
@@ -23,8 +22,8 @@ const SurveyForm = props => {
               </List>
             ) : (
               <List renderHeader={`${item.input_num}.${item.input_title}`}>
-                {item.input_options &&
-                  item.input_options.map(i => (
+                {item.options &&
+                  item.options.map(i => (
                     <CheckItem
                       key={i.field_value}
                       value={i.field_value}
