@@ -11,9 +11,10 @@ import { updatePrefsAnswers } from '@/actions/surveyAnsws';
 class Prefs extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
+    if (!id) return;
     const { catid, preFields, rawData } = this.props.surveyData;
     if (catid !== Number(id) || !rawData.user_required || !preFields.length) {
-      this.props.history.push(`/${catid}`);
+      this.props.history.push(`/${id}`);
     }
   }
 
@@ -58,7 +59,7 @@ class Prefs extends Component {
     const { catid } = this.props.surveyData;
     const fieldList = this.getFieldList();
     const hasEmpty = fieldList.filter(item => {
-      if (item.input_type === '1') {
+      if (item.input_type === 1) {
         return !prefsAnswers[item.input_num] || !prefsAnswers[item.input_num].length;
       } else {
         return !!!prefsAnswers[item.input_num];
