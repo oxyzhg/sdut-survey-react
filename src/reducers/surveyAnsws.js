@@ -19,6 +19,11 @@ const surveyData = (state = initialStore, action) => {
           ...action.data
         }
       };
+    case 'CLEAR_ALL_ANSWERS':
+      return {
+        prefsAnswers: {},
+        surveyAnswers: {}
+      };
     default:
       return state;
   }
