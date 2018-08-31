@@ -21,6 +21,7 @@ class Home extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
+    if (!id) return;
     const { catid } = this.props.surveyData;
 
     if (catid !== Number(id)) {
@@ -151,7 +152,7 @@ class Home extends Component {
           updateSurfs(invest_questions);
           updateRawData(res.data.data);
           if (user_required) {
-            this.props.history.push(`/prefs/${id}`);
+            this.props.history.push(`/prefs/${id}?catid=4`);
           }
         }
       })
@@ -160,6 +161,11 @@ class Home extends Component {
       });
   };
 
+  /**
+   * @description 向服务器发送请求，成功后跳转
+   * @param {*} data
+   * @returns
+   */
   postSurveyAnswers = data => {
     if (!data) return;
     const { baseUrl } = this.props;
