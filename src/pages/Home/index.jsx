@@ -10,7 +10,7 @@ import SurveyForm from '@/components/SurveyForm';
 import SubmitBtn from '@/components/SubmitBtn';
 import Loading from '@/components/Loading';
 import { updateCatid, updatePrefs, updateSurfs, updateRawData } from '@/actions/surveyData';
-import { updateSurveyAnswers } from '@/actions/surveyAnsws';
+import { updateSurveyAnswers, clearAllAnswers } from '@/actions/surveyAnsws';
 
 class Home extends Component {
   constructor(props) {
@@ -147,12 +147,13 @@ class Home extends Component {
           const { id, login_questions, invest_questions, user_required } = res.data.data;
           const { updateCatid, updatePrefs, updateSurfs, updateRawData } = this.props;
           // TODO: 判断开放关闭时间段
+          console.log(res.data.data);
           updateCatid(id);
           updatePrefs(login_questions);
           updateSurfs(invest_questions);
           updateRawData(res.data.data);
           if (user_required) {
-            this.props.history.push(`/prefs/${id}?catid=4`);
+            this.props.history.push(`/prefs/${id}`);
           }
         }
       })
@@ -176,8 +177,11 @@ class Home extends Component {
       .post(`${baseUrl}/ques/${catid}`, params)
       .then(res => {
         if (res.status >= 200 && res.status <= 300) {
+          // TODO: 判断返回
           console.log(res);
-          // this.props.history.push(`/result/${catid}`);
+          Toast.success('提交成功');
+          this.props.clearAllAnswers();
+          this.props.history.push(`/result/${catid}`);
         }
       })
       .catch(err => {
@@ -221,6 +225,7 @@ const mapDispatchToProps = dispatch => ({
   updatePrefs: bindActionCreators(updatePrefs, dispatch),
   updateSurfs: bindActionCreators(updateSurfs, dispatch),
   updateRawData: bindActionCreators(updateRawData, dispatch),
+  clearAllAnswers: bindActionCreators(clearAllAnswers, dispatch),
   updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch)
 });
 

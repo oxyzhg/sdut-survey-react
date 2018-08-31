@@ -3,6 +3,10 @@ import BasicLayout from '@/layouts/BasicLayout';
 import ResultPage from '@/components/ResultPage';
 
 class Finish extends Component {
+  componentDidMount() {
+    // console.log(this.props)
+  }
+
   render() {
     return (
       <BasicLayout history={this.props.history}>
