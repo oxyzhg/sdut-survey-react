@@ -1,10 +1,15 @@
 .am-list {
   margin-top: 8px;
-}
+  .am-input-label,
+  .am-list-content,
+  .am-list-extra {
+    font-size: 14px !important;
+    white-space: normal !important;
+  }
 
-.am-list-item .am-list-line .am-list-content {
-  font-size: 14px;
-  white-space: normal !important;
+  input::-webkit-input-placeholder {
+    font-size: 14px;
+  }
 }
 
 .page__title {
@@ -23,10 +28,10 @@
   text-indent: 2em;
   line-height: 1.36;
   font-size: 14px;
-}
 
-.page__desc p {
-  margin: 8px;
+  p {
+    margin: 8px;
+  }
 }
 
 .pre-fields-form {
