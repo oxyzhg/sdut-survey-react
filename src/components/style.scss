@@ -10,6 +10,15 @@
   input::-webkit-input-placeholder {
     font-size: 14px;
   }
+  input:-moz-placeholder {
+    font-size: 14px;
+  }
+  input::moz-placeholder {
+    font-size: 14px;
+  }
+  input:-ms-input-placeholder {
+    font-size: 14px;
+  }
 }
 
 .page__title {
