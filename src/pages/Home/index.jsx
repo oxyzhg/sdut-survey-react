@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Toast } from 'antd-mobile';
+import moment from 'moment';
 import axios from 'axios';
 import qs from 'qs';
 import BasicLayout from '@/layouts/BasicLayout';
@@ -16,7 +17,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
   componentDidMount() {
@@ -106,7 +107,7 @@ class Home extends Component {
     });
 
     if (hasSurveyEmpty.length) {
-      Toast.info('请完成所有必选题再提交', 1);
+      Toast.info(`请先完成第${hasSurveyEmpty[0].input_num}题再提交`);
       return;
     }
     if (user_required) {
@@ -126,9 +127,8 @@ class Home extends Component {
     }
     const formData = {
       userinfo: prefsAnswers,
-      answers: surveyAnswers
+      answers: surveyAnswers,
     };
-    console.log(formData);
     this.postSurveyAnswers(formData);
   };
 
@@ -144,7 +144,12 @@ class Home extends Component {
       .get(`${baseUrl}/ques/${id}`)
       .then(res => {
         if (res.status >= 200 && res.status <= 300) {
-          const { id, login_questions, invest_questions, user_required } = res.data.data;
+          const { id, start_at, end_at } = res.data.data;
+          if (moment().isBefore(start_at) || moment().isAfter(end_at)) {
+            this.props.history.push({ pathname: `/result/${id}`, query: { key: 2 } });
+            return;
+          }
+          const { login_questions, invest_questions, user_required } = res.data.data;
           const { updateCatid, updatePrefs, updateSurfs, updateRawData } = this.props;
           // TODO: 判断开放关闭时间段
           console.log(res.data.data);
@@ -181,7 +186,7 @@ class Home extends Component {
           console.log(res);
           Toast.success('提交成功');
           this.props.clearAllAnswers();
-          this.props.history.push(`/result/${catid}`);
+          this.props.history.push({ pathname: `/result/${catid}`, query: { key: 1 } });
         }
       })
       .catch(err => {
@@ -217,7 +222,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   baseUrl: state.baseUrl,
   surveyData: state.surveyData,
-  surveyAnsws: state.surveyAnsws
+  surveyAnsws: state.surveyAnsws,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -226,10 +231,10 @@ const mapDispatchToProps = dispatch => ({
   updateSurfs: bindActionCreators(updateSurfs, dispatch),
   updateRawData: bindActionCreators(updateRawData, dispatch),
   clearAllAnswers: bindActionCreators(clearAllAnswers, dispatch),
-  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch)
+  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Home);
