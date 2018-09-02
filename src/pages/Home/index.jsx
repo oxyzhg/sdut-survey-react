@@ -17,7 +17,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
     };
   }
   componentDidMount() {
@@ -107,7 +107,7 @@ class Home extends Component {
     });
 
     if (hasSurveyEmpty.length) {
-      Toast.info('请完成所有必选题再提交', 1);
+      Toast.info(`请先完成第${hasSurveyEmpty[0].input_num}题再提交`);
       return;
     }
     if (user_required) {
@@ -127,7 +127,7 @@ class Home extends Component {
     }
     const formData = {
       userinfo: prefsAnswers,
-      answers: surveyAnswers
+      answers: surveyAnswers,
     };
     this.postSurveyAnswers(formData);
   };
@@ -222,7 +222,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   baseUrl: state.baseUrl,
   surveyData: state.surveyData,
-  surveyAnsws: state.surveyAnsws
+  surveyAnsws: state.surveyAnsws,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -231,10 +231,10 @@ const mapDispatchToProps = dispatch => ({
   updateSurfs: bindActionCreators(updateSurfs, dispatch),
   updateRawData: bindActionCreators(updateRawData, dispatch),
   clearAllAnswers: bindActionCreators(clearAllAnswers, dispatch),
-  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch)
+  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Home);

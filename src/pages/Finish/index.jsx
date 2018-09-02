@@ -40,8 +40,7 @@ class Finish extends Component {
     const { icon, iconColor, title, message } = this.state;
     return (
       <BasicLayout history={this.props.history}>
-        <ResultPage icon={icon} iconColor={iconColor} title={title} message={message} />;
-        {/* <ResultPage icon="check-circle" title="提交成功" message="感谢您的参与" />; */}
+        <ResultPage icon={icon} iconColor={iconColor} title={title} message={message} />
       </BasicLayout>
     );
   }
