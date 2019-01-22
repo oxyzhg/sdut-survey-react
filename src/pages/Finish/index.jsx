@@ -10,7 +10,6 @@ class Finish extends Component {
     message: '请检查您的操作是否正确'
   };
   componentDidMount() {
-    console.log(this.props.history.location.query);
     const { query } = this.props.history.location;
     if (query) {
       switch (query.key) {

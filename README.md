@@ -5,7 +5,7 @@
 把代码拉到本地：
 
 ```bash
-git clone https://github.com/oxyzhg/sdut-survey-react.git
+git clone https://github.com/oxyzhg/sdut-survey.git
 ```
 
 进入项目文件夹：
