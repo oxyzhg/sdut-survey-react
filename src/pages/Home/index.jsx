@@ -152,11 +152,11 @@ class Home extends Component {
           const { login_questions, invest_questions, user_required } = res.data.data;
           const { updateCatid, updatePrefs, updateSurfs, updateRawData } = this.props;
           // TODO: 判断开放关闭时间段
-          console.log(res.data.data);
           updateCatid(id);
           updatePrefs(login_questions);
           updateSurfs(invest_questions);
           updateRawData(res.data.data);
+          this.setState({ loading: false });
           if (user_required) {
             this.props.history.push(`/prefs/${id}`);
           }
