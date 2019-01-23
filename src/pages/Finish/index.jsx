@@ -29,6 +29,14 @@ class Finish extends Component {
             message: '此问卷现在不在开放时间段'
           });
           break;
+        case 3:
+          this.setState({
+            icon: 'cross-circle',
+            iconColor: '#f13642',
+            title: '404',
+            message: '请检查页面链接是否正确'
+          })
+          break;
         default:
           return;
       }

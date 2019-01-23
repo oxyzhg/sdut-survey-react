@@ -17,7 +17,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: true
     };
   }
   componentDidMount() {
@@ -127,7 +127,7 @@ class Home extends Component {
     }
     const formData = {
       userinfo: prefsAnswers,
-      answers: surveyAnswers,
+      answers: surveyAnswers
     };
     this.postSurveyAnswers(formData);
   };
@@ -163,7 +163,15 @@ class Home extends Component {
         }
       })
       .catch(err => {
-        console.error(err);
+        const { status_code, message } = err.response.data;
+        switch (status_code) {
+          case 404:
+            Toast.info(message);
+            this.props.history.push({ pathname: `/result/${id}`, query: { key: 3 } });
+            break;
+          default:
+            Toast.info('未知错误');
+        }
       });
   };
 
@@ -222,7 +230,7 @@ class Home extends Component {
 const mapStateToProps = state => ({
   baseUrl: state.baseUrl,
   surveyData: state.surveyData,
-  surveyAnsws: state.surveyAnsws,
+  surveyAnsws: state.surveyAnsws
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -231,10 +239,10 @@ const mapDispatchToProps = dispatch => ({
   updateSurfs: bindActionCreators(updateSurfs, dispatch),
   updateRawData: bindActionCreators(updateRawData, dispatch),
   clearAllAnswers: bindActionCreators(clearAllAnswers, dispatch),
-  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch),
+  updateSurveyAnswers: bindActionCreators(updateSurveyAnswers, dispatch)
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Home);
